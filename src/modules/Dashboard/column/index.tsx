@@ -3,6 +3,7 @@ import styled from "styled-components";
 const All = styled.div`
   background-color: #FFFFFF;
   width: 300px;
+  height: 1080px;
  
   
 `

@@ -1,0 +1,21 @@
+.all{
+    display: flex;
+    flex-direction: row;
+}
+.table{
+    width: 100%;
+
+}
+.title{
+
+}
+th {
+    border-width: 1px;
+    padding: 20px 15px;
+    text-align: left;
+    font-weight: 500;
+    font-size: 12px;
+    text-transform: uppercase;
+    width: 200px;
+}
+
