@@ -1,24 +1,48 @@
-import Column from "./column/index"
-import styled from "styled-components";
-import "./style.css"
-const index = () =>{
-    return(
-        <div className={"all"}>
-            <Column></Column>
-            <body>
-                {/*<text>Quản lý</text>*/}
-                <table className={"table"}>
-                    <tr  >
-                        <th className={"title"}>STT</th>
-                        <th className={"title"}>FullName</th>
-                        <th className={"title"}>Email</th>
-                        <th className={"title"}>Email</th>
-                        <th className={"title"}>Email</th>
-                        <th className={"title"}>Action</th>
-                    </tr>
-                </table>
-            </body>
-        </div>
-    )
-}
-export default index
+
+import Column from "./Column"
+import "./style.scss"
+import React, { useEffect} from "react";
+import {getUser} from "./reducer";
+import {dashboardStore} from "./store";
+import { Observer } from 'mobx-react'
+function Index() {
+     useEffect(()=>{
+         getUser();
+     },dashboardStore.userData)
+    return (
+         <Observer>
+             {() => (
+                 <div className={"all"}>
+                     <Column></Column>
+                     <div className="table">
+                         <div className="table-header">
+                             <div className="header__item">STT</div>
+                             <div className="header__item">Email</div>
+                             <div className="header__item">Full name</div>
+                             <div className="header__item">Password</div>
+                             <div className="header__item">Action</div>
+                         </div>
+                         <div className="table-content">
+                             {
+                                 dashboardStore.userData.map((item,index)=>{
+                                     return(
+                                         <div key={index} className="table-row">
+                                             <div className="table-data">{item.id}</div>
+                                             <div className="table-data">{item.email}</div>
+                                             <div className="table-data">{item.fullname}</div>
+                                             <div className="table-data">{item.pass}</div>
+                                             <div  className="table-data"><button>Thêm</button></div>
+                                         </div>
+                                     )
+                                 })
+                             }
+                         </div>
+                     </div>
+                 </div>
+             )}
+         </Observer>
+
+     )
+ }
+
+export default Index

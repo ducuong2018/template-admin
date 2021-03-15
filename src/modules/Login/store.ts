@@ -1,7 +1,8 @@
 import {observable} from "mobx";
-class Login{
+class Login {
 
-    @observable userName:string = ""
-    @observable pass :string = ""
+    @observable userName: string = ""
+    @observable pass: string = ""
 }
 export const LoginStore = new Login();
+

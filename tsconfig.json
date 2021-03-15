@@ -23,5 +23,7 @@
   },
   "include": [
     "src"
-  ]
+  ],
+  "experimentalDecorators": true,
+  "useDefineForClassFields": true
 }

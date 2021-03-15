@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components";
+import {logout} from "../Login/reducer";
 const All = styled.div`
   background-color: #FFFFFF;
   width: 300px;
@@ -35,7 +36,7 @@ const Body = styled.div`
   justify-content: center;
   align-items: center;
 `
-const Title = styled.text`
+const Title = styled.p`
   text-align: left;
   font: normal normal bold 16px/19px Lato;
   letter-spacing: 3.52px;
@@ -46,13 +47,8 @@ const ButtonBody = styled(ButtonHeader)`
     color: #272727;
     font-family: "Lato","Regular";
 `
-const Item = styled.div`
-    
-`
-const ImageButton = styled.img`
-`
 
-const index = () =>{
+const column = () =>{
     return(
        <All>
            <Header>
@@ -80,10 +76,15 @@ const index = () =>{
                        Inbox
                    </ButtonBody>
            </Body>
+           <footer>
+               <button onClick={()=>logout()}>
+                   Logout
+               </button>
+           </footer>
 
        </All>
         )
 
 
 }
-export  default  index
+export  default  column

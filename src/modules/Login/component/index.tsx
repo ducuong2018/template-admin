@@ -1,30 +1,25 @@
 import styled from "styled-components";
 import logo from "../../../assets/login/Image.png";
 import title from "../../../assets/login/title.png";
-import login from "../../../assets/login/i-login.png";
 import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link,
-    useRouteMatch,
-    useParams,
-    Redirect,
     useHistory
 } from "react-router-dom";
-import Dashboard from "../../Dashboard";
-import React from "react";
+import React, {useEffect} from "react";
 import {checkLogin} from "../reducer";
 
+let history:IHistory
+interface IHistory {
+    goBack: () => any
+    push: (path: string, state?: any)=>any
+
+}
+export {history}
 function Index (){
-        let history = useHistory();
-        function handleClick() {
-            history.push("/Dashboard");
-            console.log(history)
-        }
+    history = useHistory();
+    useEffect(() => {
+    });
 
         return(
-            <Router>
                 <All>
                     <Body>
                         <BodyLeft>
@@ -39,11 +34,7 @@ function Index (){
                                 </DivInput>
                             </div>
 
-                            {/*<Link to={"Dashboard"} replace>*/}
-                            {/*    <BtnLogin src={login} >*/}
-                            {/*    </BtnLogin>*/}
-                            {/*</Link>*/}
-                            <button onClick={()=>handleClick()}>
+                            <button onClick={()=>checkLogin()}>
                                 Login
                             </button>
                         </BodyLeft>
@@ -55,16 +46,14 @@ function Index (){
                     </Body>
 
                 </All>
-            </Router>
-
         )
 
 }
 
 
 const All = styled.div`
-  top: 0px;
-  left: 0px;
+  top: 0;
+  left: 0;
   width: 1920px;
   height: 1080px;
   background: transparent linear-gradient(241deg, #292A32 0%, #4F5061 100%) 0% 0% no-repeat padding-box;
@@ -132,4 +121,4 @@ const BtnLogin = styled.img`
   bottom: 100px;
   left: 97px;
 `
-export default  Index
+export default Index
