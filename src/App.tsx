@@ -16,7 +16,7 @@ function App() {
                     <Dashboard/>
                 </Route>
                 <Route path="/">
-                    <Login/>
+                <Login/>
                 </Route>
                 <Route path = "/sign-up">
 
