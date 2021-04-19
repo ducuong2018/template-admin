@@ -17,6 +17,11 @@ export {history}
 function Index (){
     history = useHistory();
     useEffect(() => {
+      if(localStorage.getItem("token")){
+        console.log(history);
+        
+        history.push("/Dashboad")
+      }
     });
 
         return(

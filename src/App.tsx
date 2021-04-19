@@ -1,6 +1,6 @@
 import React from 'react';
 import Login from "./modules/Login/component/index"
-import Dashboard from "./modules/Dashboard/index"
+import Dashboard from "./modules/Dashboard/index";
 import {
     BrowserRouter as Router,
     Switch,
@@ -16,7 +16,7 @@ function App() {
                     <Dashboard/>
                 </Route>
                 <Route path="/">
-                    <Login/>
+                <Login/>
                 </Route>
             </Switch>
         </Router>

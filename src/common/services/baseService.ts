@@ -29,6 +29,8 @@ export async function getRequest(path: string): Promise<IApiResponse>{
 }
 export async function postRequest(path: string, _params: object): Promise<IApiResponse> {
     const newHeaders: { [key: string]: string } = { "Content-Type": "application/json" };
+    console.log(_params);
+    
     return new Promise<IApiResponse>((resolve) => {
         Axios({
             data: JSON.stringify(_params),
