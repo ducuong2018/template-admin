@@ -13,6 +13,8 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import { useHistory } from 'react-router-dom';
+import { LoginStore } from '../store';
+import { login } from '../reducer';
 
 function Copyright() {
   return (
@@ -67,7 +69,6 @@ interface IHistory {
 export default function SignInSide() {
   const classes = useStyles();
   history = useHistory();
-
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
@@ -91,6 +92,7 @@ export default function SignInSide() {
               name="email"
               autoComplete="email"
               autoFocus
+              onChange = {(e)=>{LoginStore.userName = e.target.value}}
             />
             <TextField
               variant="outlined"
@@ -102,13 +104,14 @@ export default function SignInSide() {
               type="password"
               id="password"
               autoComplete="current-password"
+              onChange = {(e)=>{LoginStore.passWord = e.target.value}}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
             />
-            <Button
-              type="submit"
+            <Button onClick = {()=>login()}
+              // type="submit"
               fullWidth
               variant="contained"
               color="primary"

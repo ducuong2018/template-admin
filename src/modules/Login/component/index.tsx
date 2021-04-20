@@ -5,7 +5,6 @@ import {
     useHistory
 } from "react-router-dom";
 import React, {useEffect} from "react";
-import {checkLogin} from "../reducer";
 
 let history:IHistory
 interface IHistory {
@@ -39,9 +38,7 @@ function Index (){
                                 </DivInput>
                             </div>
 
-                            <button onClick={()=>checkLogin()}>
-                                Login
-                            </button>
+                  
                         </BodyLeft>
                         <div style={{position:"relative"}}>
                             <Image src={logo}/>
