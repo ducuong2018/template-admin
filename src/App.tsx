@@ -23,10 +23,9 @@ class App extends Component<any,any> {
     }
   render(){
     return (
-        <Router  ref={instance => {console.log(instance)} }>
+        <Router  ref={instance  => {console.log(instance)} }>
             <Switch>
-            <Route path="/dashboard">
-                <Dashboard/>
+            <Route path="/dashboard" component={Dashboard}>
                 </Route>
                 <Route path="/">
                 <Login/>
