@@ -52,7 +52,6 @@ async function getRequest(url: string, isToken: boolean = true): Promise<IApiRes
 async function apiCall(url: string, method: Method, isToken: boolean = true, data?: { [key: string]: any }): Promise<IApiResponse<any>> {
   const headers: { [key: string]: string } = {};
   headers["Content-Type"] = "application/json";
-  console.log(url + "...");
   return new Promise<any>((resolve, reject) => {
     try {
       Axios(
@@ -73,11 +72,10 @@ async function apiCall(url: string, method: Method, isToken: boolean = true, dat
         .catch(error => {
           console.log(`${error.response.config.method},${url}:${error.response.status}`);
           try {
-            resolve({
+           resolve({
               status: error.response.status,
               body: humps.camelizeKeys(error.response.data)
             });
-            handleOnErrorRequest(error);
           } catch (e) {
             resolve({
               status: 500,

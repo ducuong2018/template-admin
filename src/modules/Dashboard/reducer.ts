@@ -1,17 +1,11 @@
-import {getRequest, postRequest} from "../../common/services/baseService";
-import {dashboardStore} from "./store";
-
-export const getUser = async () => {
-    const result = await getRequest("http://localhost:8081/api/user");
-    if(result.status < 300){
-        dashboardStore.userData = result.body
-        console.log(dashboardStore.userData)
-        console.log(result)
+import {history} from "../../App";
+export const checkLogin = async() =>{
+    if(await localStorage.getItem("token")){
+        // console.log("1");
+        
+        // history.push("/dashboard");
     }
-}
-export const addUser = async () =>{
-    const result = await  postRequest("http://localhost:8081/api/user",dashboardStore.addUser);
-    if(result.status < 300){
-
+    else {
+        history.push("/login")
     }
 }

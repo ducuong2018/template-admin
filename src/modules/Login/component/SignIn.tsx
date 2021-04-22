@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -12,7 +12,6 @@ import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import { useHistory } from 'react-router-dom';
 import { LoginStore } from '../store';
 import { login } from '../reducer';
 
@@ -60,15 +59,19 @@ const useStyles = makeStyles((theme:any) => ({
   },
 }));
 
-let history:IHistory
-interface IHistory {
-    goBack: () => any
-    push: (path: string, state?: any)=>any
 
-}
 export default function SignInSide() {
   const classes = useStyles();
-  history = useHistory();
+  useEffect(() => {
+    if(localStorage.getItem("token")){
+      window.location.href = '/dashboard';
+    }
+    else {
+      window.location.href = '/';
+    }
+    
+  });
+
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
@@ -126,7 +129,7 @@ export default function SignInSide() {
                 </Link>
               </Grid>
               <Grid item>
-                <Link onClick = {()=>{history.push("/sign-up")}} href="#SignUp" variant="body2">
+                <Link href="#SignUp" variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
