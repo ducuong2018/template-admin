@@ -1,46 +1,30 @@
 import React, {  Component } from 'react';
 import Login from "./modules/Login/component/SignIn";
+import Register from "./modules/Login/component/SignUp";
+import RegisterOtp from "./modules/Login/component/SignUpOtp"
 import Dashboard from "./modules/dashboard/index"
 import {
     BrowserRouter as Router,
     Switch,
     Route,
-    useHistory,
 } from "react-router-dom";
 import { observer } from 'mobx-react';
-
-export let history:IHistory
-interface IHistory {
-    goBack: () => any
-    push: (path: string, state?: any)=>any
-
-}
 @observer
-class App extends Component<any,any> {
-    private static RouterRef = React.createRef<Router>();
-    static get history(): IHistory {
-        return (App.RouterRef.current as any).history;
-    }
+export default class App extends Component<any,any> {
   render(){
     return (
         <Router  ref={instance  => {console.log(instance)} }>
             <Switch>
-            <Route path="/dashboard" component={Dashboard}>
-                </Route>
-                <Route path="/">
-                <Login/>
-                </Route>
-                <Route path = "/sign-up">
+            <Route path="/dashboard" component={Dashboard}/>
+            <Route path = "/register-otp" component  = {RegisterOtp}/>
+            <Route path = "/register" component  = {Register}/>
 
-                </Route>
+            <Route path="/" component = {Login}/>
             </Switch>
         </Router>
 
     )
   }
     
-}
-
-
-export default App;
+};
 

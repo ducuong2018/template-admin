@@ -66,10 +66,6 @@ export default function SignInSide() {
     if(localStorage.getItem("token")){
       window.location.href = '/dashboard';
     }
-    else {
-      window.location.href = '/';
-    }
-    
   });
 
   return (
@@ -129,7 +125,7 @@ export default function SignInSide() {
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="#SignUp" variant="body2">
+                <Link onClick = {()=> window.location.href = '/dashboard'} href="register" variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>

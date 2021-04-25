@@ -1,7 +1,7 @@
 import {observable} from "mobx";
-interface ILogin{
-    userName:string,
-    passWord:string
+export interface ILogin{
+    email:string,
+    password:string
 }
 class Login {
    @observable userName:string = ""
